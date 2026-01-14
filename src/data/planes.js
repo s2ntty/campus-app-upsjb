@@ -157,3 +157,45 @@ export const PLAN_MEDICINA_VIEJO = [
         ]
     }
 ];
+
+export const PLAN_APU = [
+    {
+        anio: 1,
+        materias: [
+            { id: 'IF001', nombre: 'Elementos de informática', cuatrimestre: '1°C', horas: 105, correlativas: [] },
+            { id: 'MA045', nombre: 'Álgebra', cuatrimestre: '1°C', horas: 135, correlativas: [] },
+            { id: 'IF002', nombre: 'Expresión de Problemas y Algoritmos', cuatrimestre: '1°C', horas: 90, correlativas: [] },
+            { id: 'IF003', nombre: 'Algorítmica y Programación I', cuatrimestre: '2°C', horas: 120, correlativas: ['IF002'] },
+            { id: 'MA046', nombre: 'Análisis Matemático', cuatrimestre: '2°C', horas: 150, correlativas: [] },
+            { id: 'MA008', nombre: 'Lógica y Matemática Discreta', cuatrimestre: '2°C', horas: 120, correlativas: [] },
+        ]
+    },
+    {
+        anio: 2,
+        materias: [
+            { id: 'IF004', nombre: 'Sistemas y Organizaciones', cuatrimestre: '1°C', horas: 90, correlativas: [] },
+            { id: 'IF005', nombre: 'Arquitectura de Computadoras', cuatrimestre: '1°C', horas: 120, correlativas: ['IF001'] },
+            { id: 'IF006', nombre: 'Algorítmica y Programación II', cuatrimestre: '1°C', horas: 120, correlativas: ['IF003', 'MA008'] },
+            { id: 'IF007', nombre: 'Bases de Datos I', cuatrimestre: '2°C', horas: 135, correlativas: ['IF006'] },
+            { id: 'MA006', nombre: 'Estadística', cuatrimestre: '2°C', horas: 90, correlativas: ['MA045', 'MA046'] },
+            { id: 'IF008', nombre: 'Programación Orientada a Objetos', cuatrimestre: '2°C', horas: 120, correlativas: ['IF006'] },
+        ]
+    },
+    {
+        anio: 3,
+        materias: [
+            { id: 'IF009', nombre: 'Laboratorio de Programación y Lenguajes', cuatrimestre: '1°C', horas: 90, correlativas: ['IF008'] },
+            { id: 'IF010', nombre: 'Análisis y Diseño de Sistemas', cuatrimestre: '1°C', horas: 135, correlativas: ['IF004', 'IF007'] },
+            { id: 'IF011', nombre: 'Sistemas Operativos', cuatrimestre: '1°C', horas: 150, correlativas: ['IF005', 'IF006'] },
+            { id: 'IF012', nombre: 'Desarrollo de Software', cuatrimestre: '2°C', horas: 135, correlativas: ['IF008', 'IF010'] },
+        ]
+    },
+    {
+        anio: 'Requisitos',
+        nombre: 'Otros Requisitos',
+        materias: [
+            { id: 'FA007', nombre: 'Acreditación de Idioma Inglés', cuatrimestre: '-', horas: 0, correlativas: [] },
+            { id: 'FA102', nombre: 'Estrategias Comunicacionales', cuatrimestre: '-', horas: 0, correlativas: ['10 Asignaturas'] },
+        ]
+    }
+];
