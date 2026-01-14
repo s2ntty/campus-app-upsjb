@@ -1,0 +1,195 @@
+:root {
+  /* LIGHT MODE (Default) */
+  --primary: #2563eb;
+  --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --secondary: #0ea5e9;
+
+  --background: #f0f4f9;
+  /* Fondo pantalla */
+  --surface: #ffffff;
+  /* Tarjetas */
+  --surface-alt: #f8fafc;
+  /* Inputs/Fondos claros */
+
+  --text: #0f172a;
+  --text-secondary: #64748b;
+  --text-inverted: #ffffff;
+
+  --border: #e2e8f0;
+  --shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(37, 99, 235, 0.05);
+
+  --btn-text: #ffffff;
+  --card-border: #ffffff;
+
+  --success-bg: #ecfdf5;
+  --success-text: #059669;
+  --warning-bg: #fff7ed;
+  --warning-text: #ea580c;
+  --pending-bg: #f1f5f9;
+  --pending-text: #64748b;
+}
+
+[data-theme="dark"] {
+  /* DARK MODE */
+  --primary: #3b82f6;
+  /* Un poco más claro para contraste */
+  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+
+  --background: #0f172a;
+  /* Azul noche profundo */
+  --surface: #1e293b;
+  /* Gris azulado oscuro */
+  --surface-alt: #334155;
+
+  --text: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-inverted: #ffffff;
+
+  --border: #334155;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+
+  --card-border: #334155;
+
+  --success-bg: rgba(5, 150, 105, 0.2);
+  --success-text: #34d399;
+  --warning-bg: rgba(234, 88, 12, 0.2);
+  --warning-text: #fbbf24;
+  --pending-bg: rgba(100, 116, 139, 0.2);
+  --pending-text: #cbd5e1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  background-color: #0f172a;
+  /* Fondo detrás del layout móvil siempre oscuro para contraste */
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+#root {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: var(--background);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.page-container {
+  padding: 1.5rem;
+  flex: 1;
+  padding-bottom: 90px;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+  background: var(--primary-gradient);
+  color: var(--btn-text);
+  padding: 1rem;
+  border-radius: 16px;
+  font-weight: 600;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transition: transform 0.2s;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.input-field {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.3s;
+}
+
+.input-field:focus {
+  border-color: var(--primary);
+  background: var(--surface);
+}
+
+.login-screen {
+  background: var(--background);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  transition: background 0.3s;
+}
+
+.login-logo {
+  width: 80px;
+  height: 80px;
+  background: var(--primary-gradient);
+  border-radius: 20px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+}
