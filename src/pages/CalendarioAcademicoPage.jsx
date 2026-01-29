@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Rocket } from 'lucide-react';
+import { getEventosByCarrera } from '../data/carreras';
 
-const CalendarioAcademicoPage = () => {
+const CalendarioAcademicoPage = ({ userCarrera, userSede }) => {
     const [facultad, setFacultad] = useState('naturales');
     const today = new Date();
+
+    // Obtener eventos específicos de la carrera del usuario
+    const eventosCarrera = userCarrera ? getEventosByCarrera(userCarrera) : [];
 
     const eventosNaturales = [{ start: '2026-02-09', end: '2026-02-13', titulo: '1° Turno Exámenes Febrero', tipo: 'examen', icon: '📝' }, { start: '2026-02-09', end: '2026-03-06', titulo: 'Curso Nivelación Ingresantes', tipo: 'clase', icon: '🎓' }, { start: '2026-02-23', end: '2026-02-27', titulo: '2° Turno Exámenes Febrero', tipo: 'examen', icon: '📝' }, { start: '2026-03-09', end: '2026-03-27', titulo: 'Inscripción Materias Anuales/1°C', tipo: 'tramite', icon: '✍️' }, { start: '2026-03-16', end: '2026-03-20', titulo: 'Turno Exámenes Marzo', tipo: 'examen', icon: '📝' }, { start: '2026-03-16', end: null, titulo: 'Inicio de Clases 1° Cuatrimestre', tipo: 'inicio', icon: '🚀' }, { start: '2026-03-24', end: null, titulo: 'Feriado: Memoria por la Verdad', tipo: 'feriado', icon: '🇦🇷' }, { start: '2026-04-02', end: null, titulo: 'Feriado: Malvinas', tipo: 'feriado', icon: '🇦🇷' }, { start: '2026-04-20', end: '2026-04-24', titulo: 'Turno Exámenes Abril', tipo: 'examen', icon: '📝' }, { start: '2026-05-01', end: null, titulo: 'Feriado: Día del Trabajador', tipo: 'feriado', icon: '👷' }, { start: '2026-05-18', end: '2026-05-22', titulo: 'Turno Exámenes Mayo', tipo: 'examen', icon: '📝' }, { start: '2026-05-25', end: null, titulo: 'Feriado: Revolución de Mayo', tipo: 'feriado', icon: '🇦🇷' }, { start: '2026-06-08', end: '2026-06-12', titulo: 'Turno Exámenes Junio', tipo: 'examen', icon: '📝' }, { start: '2026-06-26', end: null, titulo: 'Fin 1° Cuatrimestre', tipo: 'fin', icon: '🏁' }, { start: '2026-07-06', end: '2026-08-14', titulo: 'Inscripción Materias 2°C', tipo: 'tramite', icon: '✍️' }, { start: '2026-07-13', end: '2026-07-17', titulo: '1° Turno Exámenes Julio', tipo: 'examen', icon: '📝' }, { start: '2026-07-20', end: '2026-07-31', titulo: 'Receso Invernal', tipo: 'receso', icon: '❄️' }, { start: '2026-08-10', end: '2026-08-18', titulo: '2° Turno Exámenes Julio', tipo: 'examen', icon: '📝' }, { start: '2026-08-10', end: null, titulo: 'Inicio 2° Cuatrimestre', tipo: 'inicio', icon: '🚀' }, { start: '2026-08-24', end: '2026-08-28', titulo: 'Turno Exámenes Agosto', tipo: 'examen', icon: '📝' }, { start: '2026-09-28', end: '2026-10-02', titulo: 'Turno Exámenes Septiembre', tipo: 'examen', icon: '📝' }, { start: '2026-10-19', end: '2026-10-23', titulo: 'Turno Exámenes Octubre', tipo: 'examen', icon: '📝' }, { start: '2026-11-27', end: null, titulo: 'Fin 2° Cuatrimestre', tipo: 'fin', icon: '🏁' }, { start: '2026-11-30', end: '2026-12-04', titulo: '1° Turno Exámenes Diciembre', tipo: 'examen', icon: '🎄' }, { start: '2026-12-14', end: '2026-12-18', titulo: '2° Turno Exámenes Diciembre', tipo: 'examen', icon: '🎄' }];
 
@@ -31,7 +35,38 @@ const CalendarioAcademicoPage = () => {
         { start: '2026-12-14', end: '2026-12-18', titulo: 'Turno Exámenes Diciembre', tipo: 'examen', icon: '🎅' },
     ];
 
-    const eventos = facultad === 'naturales' ? eventosNaturales : eventosIngenieria;
+    // Combinar eventos generales con eventos específicos de la carrera
+    let eventos = facultad === 'naturales' ? eventosNaturales : eventosIngenieria;
+    
+    // Si hay eventos específicos de la carrera, agregarlos
+    if (eventosCarrera.length > 0) {
+        const eventosCarreraFormateados = eventosCarrera.map(evento => ({
+            start: evento.fecha,
+            end: null,
+            titulo: evento.titulo,
+            tipo: evento.tipo,
+            icon: getIconForEventType(evento.tipo)
+        }));
+        eventos = [...eventos, ...eventosCarreraFormateados];
+    }
+
+    // Función para obtener icono según tipo de evento
+    function getIconForEventType(tipo) {
+        const iconMap = {
+            'congreso': '🏛️',
+            'examen': '📝',
+            'practica': '🏥',
+            'competencia': '🏆',
+            'charla': '💬',
+            'jornada': '📚',
+            'campo': '🏔️',
+            'visita': '🏭',
+            'simposio': '🎯',
+            'feria': '🎪',
+            'viaje': '✈️'
+        };
+        return iconMap[tipo] || '📅';
+    }
     const mockDate = today.getFullYear() < 2026 ? new Date('2026-02-01') : today;
 
     const proximosEventos = eventos
@@ -49,7 +84,7 @@ const CalendarioAcademicoPage = () => {
                 <button onClick={() => setFacultad('ingenieria')} style={{ flex: 1, padding: '0.5rem', borderRadius: '8px', fontWeight: '600', fontSize: '0.85rem', background: facultad === 'ingenieria' ? 'var(--primary)' : 'transparent', color: facultad === 'ingenieria' ? 'white' : 'var(--text-secondary)', transition: 'all 0.2s' }}>Ingeniería</button>
             </div>
             {eventoMasCercano && (
-                <div className="card" style={{ background: 'var(--primary-gradient)', color: 'white', border: 'none', marginBottom: '2rem' }}>
+                <div className="card" style={{ background: 'var(--primary)', color: 'white', border: 'none', marginBottom: '2rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.5rem', opacity: 0.9 }}> <Rocket size={18} /> <span style={{ fontSize: '0.85rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px' }}>Próximo Evento</span> </div>
                     <h2 style={{ color: 'white', fontSize: '1.4rem', lineHeight: '1.3' }}>{eventoMasCercano.titulo}</h2>
                     <div style={{ marginTop: '1rem', display: 'inline-block', background: 'rgba(255,255,255,0.2)', padding: '0.5rem 1rem', borderRadius: '10px', fontWeight: '600' }}> 📅 {formatFecha(eventoMasCercano.start)} {eventoMasCercano.end ? `- ${formatFecha(eventoMasCercano.end)}` : ''} </div>
