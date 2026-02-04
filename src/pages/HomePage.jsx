@@ -692,11 +692,17 @@ const HomePage = ({ userData, onNavigate }) => {
 
                 .developer-content {
                     display: flex;
+                    flex-direction: row;
                     align-items: center;
                     justify-content: space-between;
                     gap: var(--spacing-lg);
                     position: relative;
                     z-index: 1;
+                }
+
+                .developer-info {
+                    flex: 1;
+                    min-width: 0;
                 }
 
                 .developer-title {
@@ -717,6 +723,7 @@ const HomePage = ({ userData, onNavigate }) => {
                 .social-links {
                     display: flex;
                     gap: var(--spacing-sm);
+                    flex-wrap: wrap;
                 }
 
                 .social-link {
@@ -782,19 +789,127 @@ const HomePage = ({ userData, onNavigate }) => {
                 @media (max-width: 375px) {
                     .home-content {
                         padding: var(--spacing-md);
+                        gap: var(--spacing-lg);
+                    }
+
+                    .quick-actions-section,
+                    .careers-section {
+                        margin-bottom: var(--spacing-lg);
                     }
                     
                     .greeting-title {
-                        font-size: 1.25rem;
+                        font-size: 1.125rem;
+                    }
+
+                    .greeting-subtitle {
+                        font-size: 0.8125rem;
                     }
                     
                     .next-class-title {
-                        font-size: 1.25rem;
+                        font-size: 1rem;
+                    }
+
+                    .section-title {
+                        font-size: 1rem;
+                        margin-bottom: var(--spacing-sm);
                     }
                     
                     .quick-actions-grid {
-                        grid-template-columns: repeat(2, 1fr);
+                        grid-template-columns: repeat(4, 1fr);
+                        gap: var(--spacing-xs);
+                    }
+
+                    .quick-action-item {
+                        padding: var(--spacing-sm);
+                        gap: var(--spacing-xs);
+                        border-radius: var(--radius-md);
+                    }
+
+                    .quick-action-icon {
+                        width: 36px;
+                        height: 36px;
+                    }
+
+                    .quick-action-icon svg {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    .quick-action-label {
+                        font-size: 0.625rem;
+                    }
+
+                    .career-card {
+                        padding: var(--spacing-md);
+                        gap: var(--spacing-md);
+                    }
+
+                    .career-icon {
+                        width: 48px;
+                        height: 48px;
+                    }
+
+                    .career-icon svg {
+                        width: 22px;
+                        height: 22px;
+                    }
+
+                    .career-title {
+                        font-size: 0.9375rem;
+                    }
+
+                    .career-faculty {
+                        font-size: 0.75rem;
+                    }
+
+                    .developer-card {
+                        padding: var(--spacing-md);
+                    }
+
+                    .developer-content {
+                        display: flex !important;
+                        flex-direction: row !important;
+                        align-items: center !important;
+                        justify-content: space-between !important;
                         gap: var(--spacing-sm);
+                    }
+
+                    .developer-info {
+                        flex: 1;
+                        min-width: 0;
+                        text-align: left;
+                    }
+
+                    .developer-title {
+                        font-size: 0.8125rem;
+                        margin-bottom: 2px;
+                    }
+
+                    .developer-subtitle {
+                        font-size: 0.625rem;
+                        margin-bottom: 6px;
+                    }
+
+                    .social-links {
+                        gap: 4px;
+                        justify-content: flex-start;
+                    }
+
+                    .social-link {
+                        width: 26px;
+                        height: 26px;
+                    }
+
+                    .social-link svg {
+                        width: 13px;
+                        height: 13px;
+                    }
+
+                    .developer-avatar {
+                        width: 44px;
+                        height: 44px;
+                        border-width: 2px;
+                        flex-shrink: 0 !important;
                     }
                     
                     .career-card {

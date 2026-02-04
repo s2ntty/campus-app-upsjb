@@ -219,7 +219,7 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
                         align-items: center;
                         justify-content: center;
                         z-index: 1000;
-                        padding: var(--spacing-lg);
+                        padding: var(--spacing-md);
                         animation: fadeIn 0.2s ease;
                     }
 
@@ -232,7 +232,7 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
                         background: var(--surface);
                         border-radius: var(--radius-xl);
                         width: 100%;
-                        max-width: 500px;
+                        max-width: 480px;
                         max-height: 90vh;
                         overflow-y: auto;
                         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -245,7 +245,7 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
 
                     /* Scrollbar personalizado para Chrome, Safari y Opera */
                     .modal-content::-webkit-scrollbar {
-                        width: 8px;
+                        width: 6px;
                     }
 
                     .modal-content::-webkit-scrollbar-track {
@@ -282,7 +282,7 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                        padding: var(--spacing-lg);
+                        padding: var(--spacing-md) var(--spacing-lg);
                         border-bottom: 1px solid var(--border-light);
                     }
 
@@ -290,15 +290,15 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
                         display: flex;
                         align-items: center;
                         gap: var(--spacing-sm);
-                        font-size: 1.25rem;
+                        font-size: 1.125rem;
                         font-weight: 700;
                         color: var(--text-primary);
                         margin: 0;
                     }
 
                     .modal-close {
-                        width: 36px;
-                        height: 36px;
+                        width: 32px;
+                        height: 32px;
                         border-radius: var(--radius-full);
                         background: var(--background-secondary);
                         border: none;
@@ -308,6 +308,7 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
                         justify-content: center;
                         cursor: pointer;
                         transition: all 0.2s ease;
+                        flex-shrink: 0;
                     }
 
                     .modal-close:hover {
@@ -317,20 +318,19 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
 
                     .modal-form {
                         padding: var(--spacing-lg);
-                        padding-bottom: calc(var(--spacing-lg) + 80px);
                         display: flex;
                         flex-direction: column;
-                        gap: var(--spacing-lg);
+                        gap: var(--spacing-md);
                     }
 
                     .form-group {
                         display: flex;
                         flex-direction: column;
-                        gap: var(--spacing-sm);
+                        gap: var(--spacing-xs);
                     }
 
                     .form-label {
-                        font-size: 0.875rem;
+                        font-size: 0.8125rem;
                         font-weight: 600;
                         color: var(--text-primary);
                         display: flex;
@@ -341,21 +341,21 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
                     .tipo-selector {
                         display: grid;
                         grid-template-columns: repeat(3, 1fr);
-                        gap: var(--spacing-sm);
+                        gap: var(--spacing-xs);
                     }
 
                     .tipo-btn {
-                        padding: var(--spacing-md);
-                        border-radius: var(--radius-lg);
+                        padding: var(--spacing-sm) var(--spacing-xs);
+                        border-radius: var(--radius-md);
                         border: 2px solid var(--border-light);
                         background: var(--background-secondary);
                         color: var(--text-secondary);
-                        font-size: 0.875rem;
+                        font-size: 0.8125rem;
                         font-weight: 600;
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        gap: var(--spacing-xs);
+                        gap: 4px;
                         cursor: pointer;
                         transition: all 0.2s ease;
                     }
@@ -374,12 +374,12 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
                     .form-input,
                     .form-select,
                     .form-textarea {
-                        padding: var(--spacing-md);
-                        border-radius: var(--radius-lg);
+                        padding: var(--spacing-sm) var(--spacing-md);
+                        border-radius: var(--radius-md);
                         border: 2px solid var(--border-light);
                         background: var(--background-secondary);
                         color: var(--text-primary);
-                        font-size: 0.9375rem;
+                        font-size: 0.875rem;
                         font-family: inherit;
                         transition: all 0.2s ease;
                     }
@@ -399,16 +399,16 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
 
                     .modal-actions {
                         display: flex;
-                        gap: var(--spacing-md);
-                        padding-top: var(--spacing-md);
+                        gap: var(--spacing-sm);
+                        padding-top: var(--spacing-sm);
                     }
 
                     .btn-secondary,
                     .btn-primary {
                         flex: 1;
-                        padding: var(--spacing-md);
-                        border-radius: var(--radius-lg);
-                        font-size: 0.9375rem;
+                        padding: var(--spacing-sm) var(--spacing-md);
+                        border-radius: var(--radius-md);
+                        font-size: 0.875rem;
                         font-weight: 600;
                         cursor: pointer;
                         transition: all 0.2s ease;
@@ -441,6 +441,75 @@ const ObjetivosModal = ({ isOpen, onClose, onSave, carreraId, userId }) => {
                     .btn-primary:disabled {
                         opacity: 0.5;
                         cursor: not-allowed;
+                    }
+
+                    /* Responsive para pantallas muy pequeñas */
+                    @media (max-width: 360px) {
+                        .modal-overlay {
+                            padding: var(--spacing-sm);
+                        }
+
+                        .modal-content {
+                            max-width: 100%;
+                            border-radius: var(--radius-lg);
+                        }
+
+                        .modal-header {
+                            padding: var(--spacing-sm) var(--spacing-md);
+                        }
+
+                        .modal-title {
+                            font-size: 1rem;
+                            gap: var(--spacing-xs);
+                        }
+
+                        .modal-title svg {
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        .modal-close {
+                            width: 28px;
+                            height: 28px;
+                        }
+
+                        .modal-form {
+                            padding: var(--spacing-md);
+                            gap: var(--spacing-sm);
+                        }
+
+                        .form-label {
+                            font-size: 0.75rem;
+                        }
+
+                        .tipo-btn {
+                            padding: var(--spacing-xs);
+                            font-size: 0.75rem;
+                            gap: 2px;
+                        }
+
+                        .tipo-btn svg {
+                            width: 16px;
+                            height: 16px;
+                        }
+
+                        .form-input,
+                        .form-select {
+                            padding: var(--spacing-xs) var(--spacing-sm);
+                            font-size: 0.8125rem;
+                        }
+
+                        .btn-secondary,
+                        .btn-primary {
+                            padding: var(--spacing-xs) var(--spacing-sm);
+                            font-size: 0.8125rem;
+                        }
+
+                        .btn-primary svg,
+                        .btn-secondary svg {
+                            width: 16px;
+                            height: 16px;
+                        }
                     }
                 `}</style>
             </div>
