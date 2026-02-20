@@ -856,21 +856,21 @@ const RegistroPage = ({ onRegister, onShowLogin, user, onLogout }) => {
 
                 .separator-text {
                     font-size: 0.875rem;
-                    color: var(--text-tertiary);
-                    font-weight: 500;
+                    color: var(--text-secondary);
+                    font-weight: 600;
                     white-space: nowrap;
                 }
 
                 .btn-google {
-                    background: white;
-                    color: var(--text-primary);
-                    border: 1px solid var(--border-light);
+                    background: #374151;
+                    color: #ffffff;
+                    border: 1px solid #4b5563;
                     box-shadow: var(--shadow-sm);
                     transition: all 0.2s ease;
                 }
 
                 .btn-google:hover {
-                    background: var(--background-secondary);
+                    background: #4b5563;
                     box-shadow: var(--shadow-md);
                     transform: translateY(-1px);
                 }
@@ -915,8 +915,9 @@ const RegistroPage = ({ onRegister, onShowLogin, user, onLogout }) => {
 
                 .step-subtitle {
                     font-size: 0.875rem;
-                    color: var(--text-secondary);
+                    color: var(--text-primary);
                     font-weight: 500;
+                    opacity: 0.8;
                 }
 
                 .form-grid {
