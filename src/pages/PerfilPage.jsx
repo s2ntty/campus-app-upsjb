@@ -1253,6 +1253,52 @@ const PerfilPage = ({ userData = {} }) => {
                         font-size: 1.25rem;
                     }
                 }
+
+                /* Responsive para pantallas muy pequeñas (iPhone 4, etc.) */
+                @media (max-width: 320px) {
+                    .stats-mini-grid {
+                        gap: var(--spacing-sm);
+                    }
+
+                    .stat-mini-card {
+                        padding: var(--spacing-md);
+                        gap: var(--spacing-sm);
+                    }
+
+                    .stat-mini-icon {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .stat-mini-icon svg {
+                        width: 18px;
+                        height: 18px;
+                    }
+
+                    .stat-mini-value {
+                        font-size: 1.125rem;
+                    }
+
+                    .stat-mini-label {
+                        font-size: 0.75rem;
+                    }
+
+                    .credits-progress-card {
+                        padding: var(--spacing-md);
+                    }
+
+                    .credits-progress-title {
+                        font-size: 0.875rem;
+                    }
+
+                    .credits-progress-percentage {
+                        font-size: 1.125rem;
+                    }
+
+                    .credits-progress-info {
+                        font-size: 0.75rem;
+                    }
+                }
             `}</style>
         </div>
     );
